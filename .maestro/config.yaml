@@ -1,0 +1,6 @@
+# Maestro workspace config.
+# `maestro test .maestro` runs only the flows matched below;
+# subflows/ are reusable pieces called via runFlow and are never run on their own.
+flows:
+  - "smoke/*"
+  - "cases/*"

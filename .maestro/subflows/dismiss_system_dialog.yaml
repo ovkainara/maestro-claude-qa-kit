@@ -1,0 +1,17 @@
+appId: com.example.app
+---
+# Closes an Android "<app> keeps stopping" dialog of ANOTHER app if one is on
+# screen; does nothing otherwise. Call after actions that poke the system
+# (airplane mode, permission changes) when a flow fails on an unexpected overlay.
+#
+# Why: on some AVD images toggling airplane mode restarts Bluetooth and the
+# system Bluetooth app crashes. Its dialog covers the app under test and the
+# next tap fails, although the app is fine.
+# The emulator UI is assumed to be in English ("Close app").
+- runFlow:
+    when:
+      visible:
+        text: ".*keeps stopping"
+    commands:
+      - tapOn:
+          text: "Close app"

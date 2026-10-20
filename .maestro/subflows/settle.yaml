@@ -1,0 +1,19 @@
+appId: com.example.app
+---
+# Pause ~6 s so the app finishes PAINTING a screen whose elements are already
+# in the accessibility tree. Use right before takeScreenshot after a launch or
+# a navigation to a new screen.
+#
+# Why: on emulators a debug build often exposes its semantics (Maestro "sees"
+# texts and buttons) before the first frame is rasterized, so a screenshot
+# taken right after extendedWaitUntil is pure white. waitForAnimationToEnd does
+# not help: it compares two identical white frames and returns at once.
+# 3 s was not enough on a cold start; 6 s was.
+#
+# Maestro has no sleep command; waiting for an element that never exists, with
+# optional: true, is the standard way to pause without failing the flow.
+- extendedWaitUntil:
+    visible:
+      id: "__maestro_settle_never_exists__"
+    timeout: 6000
+    optional: true

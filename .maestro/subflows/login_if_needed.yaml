@@ -1,0 +1,14 @@
+appId: com.example.app
+---
+# Launches the app and makes sure an account is logged in.
+# Same env as login.yaml (EMAIL, PASSWORD). If the app is already logged in,
+# whoever is logged in stays: use login_fresh.yaml when the account matters.
+- runFlow: launch.yaml
+- runFlow:
+    when:
+      visible:
+        id: screen_login
+    file: login.yaml
+    env:
+      EMAIL: ${EMAIL}
+      PASSWORD: ${PASSWORD}

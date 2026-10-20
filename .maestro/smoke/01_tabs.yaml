@@ -1,0 +1,35 @@
+appId: com.example.app
+name: smoke-01-main-tabs-open
+tags:
+  - smoke
+---
+# Logged in as the default test account, every bottom-nav tab opens and the
+# app is still inside its main shell afterwards (no crash, no logout).
+# Screenshots are for the visual check (layout, texts, language).
+#
+# TEMPLATE: replace nav_* ids with your app's tabs (docs/SELECTORS.md) and add
+# or remove blocks. Keep the final assertVisible: it is the actual check.
+- runFlow:
+    file: ../subflows/login_if_needed.yaml
+    env:
+      EMAIL: ${MAESTRO_TEST_EMAIL}
+      PASSWORD: ${MAESTRO_TEST_PASSWORD}
+
+- tapOn:
+    id: nav_home
+- runFlow: ../subflows/settle.yaml
+- takeScreenshot: 01_home
+
+- tapOn:
+    id: nav_search
+- runFlow: ../subflows/settle.yaml
+- takeScreenshot: 02_search
+
+- tapOn:
+    id: nav_profile
+- runFlow: ../subflows/settle.yaml
+- takeScreenshot: 03_profile
+
+# Still inside the app shell after visiting every tab.
+- assertVisible:
+    id: screen_main

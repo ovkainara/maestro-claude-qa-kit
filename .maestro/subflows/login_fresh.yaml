@@ -1,0 +1,21 @@
+appId: com.example.app
+---
+# Launches the app and logs in as exactly this account: if any account is
+# logged in, logs it out first. Use when the flow checks account data
+# (e.g. the email on the profile screen); otherwise login_if_needed.yaml is faster.
+# Same env as login.yaml (EMAIL, PASSWORD).
+- runFlow: launch.yaml
+- runFlow:
+    when:
+      visible:
+        id: screen_main
+    file: logout.yaml
+- runFlow:
+    file: login.yaml
+    env:
+      EMAIL: ${EMAIL}
+      PASSWORD: ${PASSWORD}
+# If the main screen fires one-time things after login (onboarding sheet,
+# "what's new" dialog, permission prompt), close them here so every flow
+# starts from a clean main screen. Example:
+# - runFlow: close_onboarding.yaml

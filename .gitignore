@@ -1,0 +1,10 @@
+# Secrets and machine-specific config
+.maestro/.env
+.maestro/kit.env
+
+# Test run output (screenshots, JUnit reports, logs)
+.maestro/artifacts/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db

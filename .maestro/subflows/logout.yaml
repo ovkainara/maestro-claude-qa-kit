@@ -1,0 +1,15 @@
+appId: com.example.app
+---
+# Logs out from the main shell. Ends on the login screen.
+# Adapt the taps to your app's navigation (profile menu, settings, drawer...).
+# Ids expected: nav_home, home_avatar (opens the profile menu), drawer_logout.
+- tapOn:
+    id: nav_home
+- tapOn:
+    id: home_avatar
+- tapOn:
+    id: drawer_logout
+- extendedWaitUntil:
+    visible:
+      id: screen_login
+    timeout: 20000

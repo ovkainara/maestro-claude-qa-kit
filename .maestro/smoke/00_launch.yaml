@@ -1,0 +1,12 @@
+appId: com.example.app
+name: smoke-00-app-launches
+tags:
+  - smoke
+---
+# The installed build starts and shows a real first screen: login when logged
+# out, the main shell when logged in. A screenshot alone is not a check: the
+# first version of this flow "passed" on a blank white screen. launch.yaml
+# asserts the screen id; settle.yaml lets the frame paint before the shot.
+- runFlow: ../subflows/launch.yaml
+- runFlow: ../subflows/settle.yaml
+- takeScreenshot: 00_launch

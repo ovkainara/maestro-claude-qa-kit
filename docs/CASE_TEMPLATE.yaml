@@ -1,0 +1,40 @@
+appId: com.example.app
+name: case-YYYY-MM-DD-short-topic
+tags:
+  - case
+env:
+  EMAIL: ${MAESTRO_TEST_EMAIL}
+  PASSWORD: ${MAESTRO_TEST_PASSWORD}
+---
+# Copy to .maestro/cases/<YYYY-MM-DD>_<short-topic>.yaml.
+# One case = one change under test. Comment WHAT is checked and WHY, with the date:
+# the next person (or the next session) reads this, not the commit.
+#
+# Checks:
+#  1. <item 1>
+#  2. <item 2>
+
+# Start from a known state: launched, logged in as the given account.
+- runFlow:
+    file: ../subflows/login_fresh.yaml
+    env:
+      EMAIL: ${EMAIL}
+      PASSWORD: ${PASSWORD}
+
+# Navigate. Prefer ids; a text selector binds the flow to one language.
+- tapOn:
+    id: nav_home
+
+# Things that appear after a network call: wait with a timeout, never assert at once.
+- extendedWaitUntil:
+    visible:
+      id: home_content
+    timeout: 20000
+
+# Let the frame paint before the shot (elements exist in the tree before the paint).
+- runFlow: ../subflows/settle.yaml
+- takeScreenshot: 01_home
+
+# The actual check. A flow without a final assertion tests nothing.
+- assertVisible:
+    id: screen_main

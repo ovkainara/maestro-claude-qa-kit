@@ -1,0 +1,32 @@
+appId: com.example.app
+---
+# Launches the app and waits for its first real screen (login or main shell).
+# Use this instead of a bare launchApp in every flow.
+#
+# Why the wait: a debug build can take 10-30 s to show its first frame. A flow
+# that taps right after launchApp fails on a white screen.
+#
+# Why the retry: launchApp stops the app before starting it, and some emulators
+# (LDPlayer's task manager, for one) kill the freshly started process a moment
+# later. The emulator is then left on its home screen with no crash or ANR.
+# One relaunch recovers; a second miss fails the flow, because then something
+# is really wrong.
+#
+# Requires: the root widget of the login screen has id screen_login and the
+# root of the main (logged-in) shell has id screen_main. See docs/SELECTORS.md.
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "screen_(login|main)"
+    timeout: 30000
+    optional: true
+- runFlow:
+    when:
+      notVisible:
+        id: "screen_(login|main)"
+    commands:
+      - launchApp
+      - extendedWaitUntil:
+          visible:
+            id: "screen_(login|main)"
+          timeout: 30000

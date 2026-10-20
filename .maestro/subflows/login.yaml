@@ -1,0 +1,31 @@
+appId: com.example.app
+---
+# Logs in with email + password, starting from the login screen.
+# Call with the account's variables from .maestro/.env:
+#   - runFlow:
+#       file: ../subflows/login.yaml
+#       env:
+#         EMAIL: ${MAESTRO_TEST_EMAIL}
+#         PASSWORD: ${MAESTRO_TEST_PASSWORD}
+# Ends on the main shell (id screen_main). If a test account lands on an extra
+# screen first (consent, onboarding, dialog), handle it HERE, not in each flow.
+#
+# Ids expected in the app (docs/SELECTORS.md): screen_login, auth_login_email,
+# auth_login_password, auth_login_submit, screen_main.
+- extendedWaitUntil:
+    visible:
+      id: screen_login
+    timeout: 30000
+- tapOn:
+    id: auth_login_email
+- inputText: ${EMAIL}
+- tapOn:
+    id: auth_login_password
+- inputText: ${PASSWORD}
+- hideKeyboard
+- tapOn:
+    id: auth_login_submit
+- extendedWaitUntil:
+    visible:
+      id: screen_main
+    timeout: 30000
