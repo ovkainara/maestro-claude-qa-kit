@@ -8,7 +8,11 @@ paste into any AI coding session for the fix. No one has to sit at the emulator.
 Built for apps written fast — Flutter, Expo / React Native, native Android — that
 now hit the wall of "works on my phone, rejected by the store, crashes for users".
 
-> Demo: *(link to the video)*
+![Claude Code drives a Flutter app on an Android emulator, finds a bug and re-checks every language](docs/demo.gif)
+
+*A real run on a Flutter health app (LDPlayer, Windows), sped up 5–15×: the agent drives
+the screens, finds a wrong "Not connected" status after a denied permission, then
+re-checks every UI language and a small screen.*
 
 ## What is in the box
 
@@ -84,7 +88,10 @@ paste it into your coding session.
 
 - Android emulators: Android Studio AVD, LDPlayer, Genymotion; USB devices.
 - Windows (PowerShell 5.1+), macOS, Linux.
-- Flutter, Expo / React Native, native Android (Gradle), or any prebuilt APK.
+- Flutter, native Android (Gradle), or any prebuilt APK.
+- Expo / React Native: supported by the scripts (`build-install` makes a release variant
+  so runs need no Metro), but **not yet tested on a real Expo project**. If you try it,
+  an issue with what happened is very welcome.
 - iOS: the same Maestro flows run on the iOS Simulator on a Mac; the scripts here are
   Android-only for now.
 
@@ -96,8 +103,11 @@ with real data. The tester lists them under "Not covered automatically".
 ## Want it set up for you?
 
 I set this up in your repo, add the ids, write the first cases for your screens and run
-the first report — usually within two days.
-[Upwork profile](https://www.upwork.com/freelancers/~01d78aa837b6421e53) · *(contact)*
+the first report. Fixed packages from $150, delivery from 3 days.
+[Order on Fiverr](https://www.fiverr.com/cmyker32/test-your-android-app-automatically-with-claude-code-and-maestro) ·
+[@OlegGregys on X](https://x.com/OlegGregys)
+
+If the kit saved you an afternoon, a ⭐ helps other people find it.
 
 ## License
 
