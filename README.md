@@ -14,6 +14,10 @@ now hit the wall of "works on my phone, rejected by the store, crashes for users
 the screens, finds a wrong "Not connected" status after a denied permission, then
 re-checks every UI language and a small screen.*
 
+> **Not an MCP server.** This kit is a set of files you copy into your app repo. It *uses*
+> the official [Maestro MCP server](https://docs.maestro.dev/getting-started/maestro-mcp)
+> (`maestro mcp`), which `.mcp.json` registers for Claude Code. Nothing here runs as a server.
+
 ## What is in the box
 
 ```
