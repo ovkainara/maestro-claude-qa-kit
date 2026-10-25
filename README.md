@@ -67,6 +67,8 @@ Prerequisites: [Maestro CLI](https://docs.maestro.dev/getting-started/installing
 
 1. Copy `CLAUDE.md`, `.mcp.json` and `.maestro/` into the root of your app repo
    (merge `CLAUDE.md` if you already have one).
+   **Windows:** `maestro` is a `.bat` there and Claude Code cannot start it directly, so
+   change `.mcp.json` to `"command": "cmd", "args": ["/c", "maestro", "mcp"]`.
 2. Initialize:
    ```
    # Windows
