@@ -11,8 +11,8 @@ now hit the wall of "works on my phone, rejected by the store, crashes for users
 ![Claude Code drives a Flutter app on an Android emulator, finds a bug and re-checks every language](docs/demo.gif)
 
 *A real run on a Flutter health app (LDPlayer, Windows), sped up 5–15×: the agent drives
-the screens, finds a wrong "Not connected" status after a denied permission, then
-re-checks every UI language and a small screen.*
+the screens, finds a wrong "Not connected" status after one Health Connect permission
+out of sixteen is denied, then re-checks every UI language and a small screen.*
 
 > **Not an MCP server.** This kit is a set of files you copy into your app repo. It *uses*
 > the official [Maestro MCP server](https://docs.maestro.dev/getting-started/maestro-mcp)
